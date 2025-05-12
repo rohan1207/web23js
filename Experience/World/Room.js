@@ -51,8 +51,10 @@ export default class Room {
             }
 
             if (child.name === "Computer") {
-                child.children[1].material = new THREE.MeshBasicMaterial({
-                    map: this.resources.items.screen,
+                child.children[1].material = new THREE.MeshStandardMaterial({
+                    color: 0xffffff,
+                    metalness: 0.8,
+                    roughness: 0.2,
                 });
             }
 
@@ -84,9 +86,9 @@ export default class Room {
             this.roomChildren[child.name.toLowerCase()] = child;
         });
 
-        const width = 0.5;
-        const height = 0.7;
-        const intensity = 1;
+        const width = 1.0;
+        const height = 1.4;
+        const intensity = 1.5;
         const rectLight = new THREE.RectAreaLight(
             0xffffff,
             intensity,
@@ -105,7 +107,7 @@ export default class Room {
         // console.log(this.room);
 
         this.scene.add(this.actualRoom);
-        this.actualRoom.scale.set(0.11, 0.11, 0.11);
+        this.actualRoom.scale.set(0.15, 0.15, 0.15);
     }
 
     setAnimation() {

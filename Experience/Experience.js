@@ -4,6 +4,7 @@ import Sizes from "./Utils/Sizes.js";
 import Time from "./Utils/Time.js";
 import Resources from "./Utils/Resources.js";
 import assets from "./Utils/assets.js";
+import { animateHero, animateSection, initScrollAnimations } from "./Utils/animations.js";
 
 import Camera from "./Camera.js";
 import Theme from "./Theme.js";
@@ -33,6 +34,12 @@ export default class Experience {
 
         this.preloader.on("enablecontrols", () => {
             this.controls = new Controls();
+            // Initialize animations after preloader
+            animateHero();
+            document.querySelectorAll('.section').forEach(section => {
+                animateSection(section);
+            });
+            initScrollAnimations();
         });
 
         this.sizes.on("resize", () => {
